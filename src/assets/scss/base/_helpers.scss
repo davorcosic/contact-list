@@ -1,0 +1,47 @@
+/* Dividers */
+.divider-vertical {
+	box-sizing: border-box;
+	height: 100%;
+	width: 2px;
+	border: 1px solid $primaryColor;
+	border-top: 0;
+	border-bottom: 0;
+	padding: 0;
+	margin: 0 1em;
+
+	&.secondary-color {
+		border-color: $secondaryColor;
+	}
+}
+
+.divider-horizontal {
+	box-sizing: border-box;
+	width: 100%;
+	height: 2px;
+	border: 1px solid $primaryColor;
+	border-left: 0;
+	border-right: 0;
+	padding: 0;
+
+	&.secondary-color {
+		border-color: $secondaryColor;
+	}
+}
+
+/* Alignment */
+.align-row-start {
+	@extend %align-row-start;
+}
+
+.align-row-end {
+	@extend %align-row-end;
+}
+
+/* Colors */
+.primary-color {
+	color: $primaryColor;
+}
+
+.secondary-color {
+	color: $secondaryColor;
+}

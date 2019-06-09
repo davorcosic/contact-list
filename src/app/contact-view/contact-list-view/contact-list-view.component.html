@@ -1,4 +1,31 @@
 <section class="p-grid">
+	<nav class="p-grid p-col-12">
+		<div class="p-col align-row-end">
+			<a [ngClass]="{'primary-color': !displayFavoriteContacts, 'secondary-color': displayFavoriteContacts}">
+				All contacts
+			</a>
+		</div>
+		<div class="p-col-fixed divider-vertical secondary-color"></div>
+		<div class="p-col align-row-start">
+			<a [ngClass]="{'primary-color': displayFavoriteContacts, 'secondary-color': !displayFavoriteContacts}">
+				My favorites
+			</a>
+		</div>
+	</nav>
+
+	<div class="p-col-12 divider-horizontal"></div>
+
+	<section class="search-input p-col-12">
+		<div class="p-col-12 p-lg-4 ui-inputgroup">
+			<span class="ui-inputgroup-addon">
+				<i class="fa fa-search"></i>
+			</span>
+			<input type="text"
+						 pInputText
+						 placeholder="Search by name ...">
+		</div>
+	</section>
+
 	<div *ngFor="let contact of contacts"
 			 class="p-col-12 p-lg-3">
 		<cl-contact-card [contact]="contact"></cl-contact-card>

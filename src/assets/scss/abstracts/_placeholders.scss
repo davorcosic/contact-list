@@ -10,3 +10,21 @@
 	flex-direction: column;
 	justify-content: center;
 }
+
+%align-row-start {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+%align-row-center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+%align-row-end {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}

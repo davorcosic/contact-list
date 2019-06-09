@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ContactListViewComponent implements OnInit {
 	contacts: ContactListItem[];
 
+	displayFavoriteContacts: boolean;
+
 	constructor(private route: ActivatedRoute) {}
 
 	ngOnInit() {

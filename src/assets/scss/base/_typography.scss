@@ -18,9 +18,32 @@ body {
 	}
 
 	& cl-contact-card {
+		& article {
+			& i.fa {
+				font-size: 1.25em;
+			}
+		}
+
 		& figcaption {
 			font-size: 1.5em;
 			font-weight: bold;
+		}
+	}
+
+	& cl-contact-list-view {
+		& nav.p-grid {
+			& a {
+				font-size: 1.5em;
+			}
+		}
+
+		& section.search-input {
+			& span.ui-inputgroup-addon {
+				font-size: 1.5em;
+			}
+			& input {
+				font-size: 1.5em;
+			}
 		}
 	}
 }
