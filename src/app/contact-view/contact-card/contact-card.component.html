@@ -2,7 +2,10 @@
 
 	<header class="p-grid p-col-3 p-lg-12 ">
 		<div class="p-col-4 p-lg-10">
-			<i class="fa fa-heart"></i>
+			<i *ngIf="contact.favorite"
+				 class="fa fa-heart"></i>
+			<i *ngIf="!contact.favorite"
+				 class="fa fa-heart-o"></i>
 		</div>
 		<div class="p-col-4 p-lg-1 action-btn">
 			<i class="fa fa-pencil"></i>
@@ -14,11 +17,11 @@
 
 	<figure class="p-grid p-col-9 p-lg-12">
 		<div class="p-col-fixed profile-picture">
-			<img src="https://stevensegallery.com/100/100"
+			<img src="{{ contact.profilePicture }}"
 					 alt="User profile picture">
 		</div>
 		<div class="p-col p-lg-12 profile-name">
-			<figcaption>Steven Segal</figcaption>
+			<figcaption>{{ contact.firstName }} {{ contact.lastName }}</figcaption>
 		</div>
 	</figure>
 

@@ -1,5 +1,6 @@
 <section class="p-grid">
-	<div class="p-col-12 p-lg-3">
-		<cl-contact-card></cl-contact-card>
+	<div *ngFor="let contact of contacts"
+			 class="p-col-12 p-lg-3">
+		<cl-contact-card [contact]="contact"></cl-contact-card>
 	</div>
 </section>
