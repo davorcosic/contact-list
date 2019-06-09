@@ -1,0 +1,11 @@
+cl-confirm-dialog {
+	& .ui-widget-content p {
+		margin: 2em;
+	}
+
+	@media screen and (max-width: $breakpointMediumEnd) {
+		& section.action-section {
+			flex-direction: column-reverse;
+		}
+	}
+}

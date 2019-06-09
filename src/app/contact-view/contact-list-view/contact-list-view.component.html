@@ -1,4 +1,4 @@
-<section class="p-grid">
+<section class="p-grid content-section">
 	<nav class="p-grid p-col-12">
 		<div class="p-col align-row-end">
 			<a [ngClass]="{'primary-color': !displayFavoriteContacts, 'secondary-color': displayFavoriteContacts}"
@@ -36,7 +36,8 @@
 		<div *ngFor="let contact of filteredAllContacts"
 				 class="p-col-12 p-lg-3">
 			<cl-contact-card [contact]="contact"
-											 (favoriteChange)="onFavoriteChange(contact.id, $event)"></cl-contact-card>
+											 (favoriteChange)="onFavoriteChange(contact.id, $event)"
+											 (deleteContact)="onDeleteContact($event)"></cl-contact-card>
 		</div>
 	</ng-container>
 
@@ -52,3 +53,6 @@
 	</ng-container>
 
 </section>
+
+<cl-confirm-dialog [displayDialog]="displayConfirmDeletionDialog"
+									 (cancelSelected)="onDeleteCanceled()"></cl-confirm-dialog>

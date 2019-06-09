@@ -33,6 +33,10 @@
 	@extend %align-row-start;
 }
 
+.align-row-center {
+	@extend %align-row-center;
+}
+
 .align-row-end {
 	@extend %align-row-end;
 }

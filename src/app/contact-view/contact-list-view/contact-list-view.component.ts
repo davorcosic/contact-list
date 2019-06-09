@@ -21,6 +21,10 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 
 	searchQuery: string;
 
+	selectedContactId: number;
+
+	displayConfirmDeletionDialog: boolean;
+
 	private searchSubscription: Subscription;
 
 	constructor(private route: ActivatedRoute, private contactService: AbstractContactService) {}
@@ -45,6 +49,15 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 
 	onFavoriteChange(contactId: number, isFavorite: boolean) {
 		this.contactService.changeFavoriteStatus(contactId, isFavorite).subscribe(() => this.loadContacts());
+	}
+
+	onDeleteContact(contactId: number) {
+		this.selectedContactId = contactId;
+		this.displayConfirmDeletionDialog = true;
+	}
+
+	onDeleteCanceled() {
+		this.displayConfirmDeletionDialog = false;
 	}
 
 	private getContacts() {
