@@ -26,6 +26,9 @@
 		</div>
 	</section>
 
+	<div class="p-col-12 p-lg-3">
+		<cl-add-new-contact-card (addNewContact)="onAddNewContact()"></cl-add-new-contact-card>
+	</div>
 	<div *ngFor="let contact of contacts"
 			 class="p-col-12 p-lg-3">
 		<cl-contact-card [contact]="contact"></cl-contact-card>

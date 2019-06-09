@@ -1,3 +1,22 @@
+cl-add-new-contact-card {
+	& article {
+		height: 100%;
+		border: 2px dashed $primaryColorLight;
+		border-radius: 5px;
+		cursor: pointer;
+		@extend %align-column-all-center;
+
+		& i.fa {
+			color: $primaryColorLight;
+		}
+
+		& p {
+			margin: 0.5em 0;
+			color: $primaryColorLight;
+		}
+	}
+}
+
 cl-contact-card {
 	& article {
 		border: 2px solid $secondaryColorLight;
@@ -69,6 +88,19 @@ cl-contact-list-view {
 }
 
 @media screen and (max-width: $breakpointMediumEnd) {
+	cl-add-new-contact-card {
+		& article {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			padding: 0.5em;
+
+			> * {
+				margin: 0 0.5em;
+			}
+		}
+	}
+
 	cl-contact-card {
 		& article {
 			flex-direction: row-reverse;

@@ -17,6 +17,18 @@ body {
 		}
 	}
 
+	& cl-add-new-contact-card {
+		& article {
+			& i.fa {
+				font-size: 3em;
+			}
+
+			& p {
+				font-size: 1.5em;
+			}
+		}
+	}
+
 	& cl-contact-card {
 		& article {
 			& i.fa {
@@ -43,6 +55,20 @@ body {
 			}
 			& input {
 				font-size: 1.5em;
+			}
+		}
+	}
+
+	@media screen and (max-width: $breakpointMediumEnd) {
+		cl-add-new-contact-card {
+			& article {
+				& i.fa {
+					font-size: 2.5em;
+				}
+
+				& p {
+					font-size: 1.25em;
+				}
 			}
 		}
 	}

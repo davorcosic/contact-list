@@ -20,4 +20,8 @@ export class ContactListViewComponent implements OnInit {
 			this.contacts = data.contacts;
 		});
 	}
+
+	onAddNewContact() {
+		console.log('Add new contact clicked!');
+	}
 }
