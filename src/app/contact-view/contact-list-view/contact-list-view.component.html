@@ -1,13 +1,15 @@
 <section class="p-grid">
 	<nav class="p-grid p-col-12">
 		<div class="p-col align-row-end">
-			<a [ngClass]="{'primary-color': !displayFavoriteContacts, 'secondary-color': displayFavoriteContacts}">
+			<a [ngClass]="{'primary-color': !displayFavoriteContacts, 'secondary-color': displayFavoriteContacts}"
+				 (click)="displayFavoriteContacts = false">
 				All contacts
 			</a>
 		</div>
 		<div class="p-col-fixed divider-vertical secondary-color"></div>
 		<div class="p-col align-row-start">
-			<a [ngClass]="{'primary-color': displayFavoriteContacts, 'secondary-color': !displayFavoriteContacts}">
+			<a [ngClass]="{'primary-color': displayFavoriteContacts, 'secondary-color': !displayFavoriteContacts}"
+				 (click)="displayFavoriteContacts = true">
 				My favorites
 			</a>
 		</div>
@@ -22,15 +24,29 @@
 			</span>
 			<input type="text"
 						 pInputText
-						 placeholder="Search by name ...">
+						 placeholder="Search by name ..."
+						 (keyup)="searchContact($event.target.value)">
 		</div>
 	</section>
 
-	<div class="p-col-12 p-lg-3">
-		<cl-add-new-contact-card (addNewContact)="onAddNewContact()"></cl-add-new-contact-card>
-	</div>
-	<div *ngFor="let contact of contacts"
-			 class="p-col-12 p-lg-3">
-		<cl-contact-card [contact]="contact"></cl-contact-card>
-	</div>
+	<ng-container *ngIf="!displayFavoriteContacts">
+		<div class="p-col-12 p-lg-3">
+			<cl-add-new-contact-card (addNewContact)="onAddNewContact()"></cl-add-new-contact-card>
+		</div>
+		<div *ngFor="let contact of filteredAllContacts"
+				 class="p-col-12 p-lg-3">
+			<cl-contact-card [contact]="contact"></cl-contact-card>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="displayFavoriteContacts">
+		<ng-container *ngFor="let contact of filteredAllContacts">
+			<div *ngIf="contact.favorite"
+					 class="p-col-12 p-lg-3">
+				<cl-contact-card *ngIf="contact.favorite"
+												 [contact]="contact"></cl-contact-card>
+			</div>
+		</ng-container>
+	</ng-container>
+
 </section>
