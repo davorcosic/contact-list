@@ -1,0 +1,86 @@
+cl-contact-card {
+	& article {
+		border: 2px solid $secondaryColorLight;
+		border-radius: 5px;
+
+		& header > div {
+			@extend %align-column-center;
+		}
+
+		& i {
+			color: $secondaryColor;
+			cursor: pointer;
+		}
+
+		& .profile-picture {
+			box-sizing: border-box;
+			@extend %align-column-all-center;
+			height: $profilePictureSize * 1.2;
+			width: $profilePictureSize * 1.2;
+		}
+
+		& .profile-name {
+			@extend %align-column-center;
+
+			& figcaption {
+				color: $secondaryColor;
+			}
+		}
+
+		& img {
+			height: $profilePictureSize;
+			width: $profilePictureSize;
+			border-radius: 50%;
+			border: 5px solid $secondaryColorLight;
+			object-fit: cover;
+		}
+	}
+}
+
+@media screen and (max-width: $breakpointMediumEnd) {
+	cl-contact-card {
+		& article {
+			flex-direction: row-reverse;
+
+			& .profile-picture {
+				height: $profilePictureSize * 0.8;
+				width: $profilePictureSize * 0.8;
+			}
+
+			& img {
+				height: $profilePictureSize * 0.7;
+				width: $profilePictureSize * 0.7;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $breakpointLargeStart) {
+	cl-contact-list-view {
+		& section {
+			padding-left: 5em;
+			padding-right: 5em;
+		}
+	}
+
+	cl-contact-card {
+		& article {
+			& .action-btn {
+				padding-left: 0;
+				padding-right: 0;
+			}
+
+			& .profile-name,
+			.profile-picture {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				width: 100%;
+			}
+
+			& .profile-name {
+				padding-bottom: 1em;
+			}
+		}
+	}
+}

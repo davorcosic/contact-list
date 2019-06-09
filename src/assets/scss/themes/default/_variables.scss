@@ -13,3 +13,8 @@ $secondaryColorLight: lighten($secondaryColor, 20%);
 
 /* Dimensions */
 $mainHeaderHeight: 100px;
+$profilePictureSize: 6em;
+
+/* Screen size breakpoints */
+$breakpointMediumEnd: 991px;
+$breakpointLargeStart: 992px;

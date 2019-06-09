@@ -1,7 +1,7 @@
 cl-page-not-found {
 	& article {
 		height: calc(100% - #{$mainHeaderHeight});
-		@extend %align-column-center;
+		@extend %align-column-all-center;
 
 		& h1,
 		p {

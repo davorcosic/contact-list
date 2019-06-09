@@ -1,6 +1,12 @@
-%align-column-center {
+%align-column-all-center {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+%align-column-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
