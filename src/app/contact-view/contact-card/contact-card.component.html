@@ -3,9 +3,11 @@
 	<header class="p-grid p-col-3 p-lg-12 ">
 		<div class="p-col-4 p-lg-10">
 			<i *ngIf="contact.favorite"
-				 class="fa fa-heart"></i>
+				 class="fa fa-heart"
+				 (click)="toggleFavorite(false)"></i>
 			<i *ngIf="!contact.favorite"
-				 class="fa fa-heart-o"></i>
+				 class="fa fa-heart-o"
+				 (click)="toggleFavorite(true)"></i>
 		</div>
 		<div class="p-col-4 p-lg-1 action-btn">
 			<i class="fa fa-pencil"></i>

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { ContactListItem } from '../../shared/model/contact-list-item.model';
-import { ActivatedRoute } from '@angular/router';
+import { AbstractContactService } from '../../shared/service/abstract-contact.service';
 
 @Component({
 	selector: 'cl-contact-list-view',
@@ -19,9 +19,11 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 
 	searchQuerySubject: Subject<string> = new Subject();
 
+	searchQuery: string;
+
 	private searchSubscription: Subscription;
 
-	constructor(private route: ActivatedRoute) {}
+	constructor(private route: ActivatedRoute, private contactService: AbstractContactService) {}
 
 	ngOnInit() {
 		this.getContacts();
@@ -33,11 +35,16 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 	}
 
 	searchContact(searchQuery: string) {
+		this.searchQuery = searchQuery;
 		this.searchQuerySubject.next(searchQuery);
 	}
 
 	onAddNewContact() {
 		console.log('Add new contact clicked!');
+	}
+
+	onFavoriteChange(contactId: number, isFavorite: boolean) {
+		this.contactService.changeFavoriteStatus(contactId, isFavorite).subscribe(() => this.loadContacts());
 	}
 
 	private getContacts() {
@@ -48,20 +55,15 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 	}
 
 	private performDistinctSearchAfterDelay() {
-		this.searchSubscription = this.searchQuerySubject
-			.pipe(
-				debounceTime(300),
-				distinctUntilChanged()
-			)
-			.subscribe((searchQuery: string) => {
-				if (!searchQuery) {
-					this.filteredAllContacts = this.allContacts;
-				} else {
-					this.filteredAllContacts = this.allContacts.filter(contact =>
-						this.isContactMatchedBySearchQuery(contact, searchQuery)
-					);
-				}
-			});
+		this.searchSubscription = this.searchQuerySubject.subscribe((searchQuery: string) => {
+			if (!searchQuery) {
+				this.filteredAllContacts = this.allContacts;
+			} else {
+				this.filteredAllContacts = this.allContacts.filter(contact =>
+					this.isContactMatchedBySearchQuery(contact, searchQuery)
+				);
+			}
+		});
 	}
 
 	private isContactMatchedBySearchQuery(contact: ContactListItem, query: string): boolean {
@@ -70,5 +72,12 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 		const lastName: string = contact.lastName.toLowerCase();
 
 		return firstName.startsWith(searchQuery) || lastName.startsWith(searchQuery);
+	}
+
+	private loadContacts() {
+		this.contactService.getAll().subscribe(contacts => {
+			this.allContacts = contacts;
+			this.searchQuerySubject.next(this.searchQuery);
+		});
 	}
 }

@@ -35,7 +35,8 @@
 		</div>
 		<div *ngFor="let contact of filteredAllContacts"
 				 class="p-col-12 p-lg-3">
-			<cl-contact-card [contact]="contact"></cl-contact-card>
+			<cl-contact-card [contact]="contact"
+											 (favoriteChange)="onFavoriteChange(contact.id, $event)"></cl-contact-card>
 		</div>
 	</ng-container>
 
@@ -44,7 +45,8 @@
 			<div *ngIf="contact.favorite"
 					 class="p-col-12 p-lg-3">
 				<cl-contact-card *ngIf="contact.favorite"
-												 [contact]="contact"></cl-contact-card>
+												 [contact]="contact"
+												 (favoriteChange)="onFavoriteChange(contact.id, $event)"></cl-contact-card>
 			</div>
 		</ng-container>
 	</ng-container>
