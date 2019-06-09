@@ -1,0 +1,15 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+$primaryFontStack: 'Roboto', sans-serif;
+$secondaryFontStack: 'Righteous', cursive;
+$baseFontSize: 16px;
+
+/* Colors */
+$primaryColor: #4baeb6;
+$primaryColorLight: lighten($primaryColor, 20%);
+$secondaryColor: #bbc4c3;
+$secondaryColorLight: lighten($secondaryColor, 20%);
+
+/* Dimensions */
+$mainHeaderHeight: 100px;

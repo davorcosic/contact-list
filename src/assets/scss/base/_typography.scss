@@ -1,0 +1,19 @@
+body {
+	font-family: $primaryFontStack;
+	font-size: $baseFontSize;
+
+	& .main-title {
+		font-family: $secondaryFontStack;
+		letter-spacing: 0.5em;
+	}
+
+	& cl-page-not-found {
+		& h1 {
+			font-size: 10em;
+		}
+
+		& p {
+			font-size: 2em;
+		}
+	}
+}

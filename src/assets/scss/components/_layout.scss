@@ -1,0 +1,15 @@
+.main-header {
+	box-sizing: border-box;
+	height: $mainHeaderHeight;
+	background-color: $primaryColor;
+	border-bottom: 10px solid $primaryColorLight;
+	@extend %align-column-center;
+
+	& .main-title {
+		color: white;
+		text-transform: uppercase;
+		text-align: center;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
