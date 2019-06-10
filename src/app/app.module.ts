@@ -17,8 +17,8 @@ import { SharedModule } from './shared/shared.module';
 		BrowserAnimationsModule,
 		// SharedModule.forRoot(MockServerContactService),
 		SharedModule.forRoot(),
-		ContactViewModule,
 		ContactAdministrationModule,
+		ContactViewModule,
 		AppRoutingModule
 	],
 	providers: [],

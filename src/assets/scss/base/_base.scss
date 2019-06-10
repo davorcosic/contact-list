@@ -1,3 +1,11 @@
+/* Layout */
+main {
+	@media screen and (min-width: $breakpointLargeStart) {
+		padding-left: 5em;
+		padding-right: 5em;
+	}
+}
+
 /* Buttons */
 button.cl-btn {
 	border-radius: 25px;

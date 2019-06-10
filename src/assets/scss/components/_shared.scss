@@ -9,3 +9,20 @@ cl-confirm-dialog {
 		}
 	}
 }
+
+cl-profile-picture-upload {
+	& figure.profile-picture {
+		height: $profilePictureSize * 2;
+		width: $profilePictureSize * 2;
+		border-radius: 50%;
+		border: 5px solid $secondaryColorLight;
+		object-fit: cover;
+		background-color: $primaryColorLight; // remove after enabling picture adding
+		@extend %align-column-all-center;
+
+		& i.fa {
+			color: white;
+			cursor: pointer;
+		}
+	}
+}

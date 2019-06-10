@@ -59,6 +59,12 @@ body {
 		}
 	}
 
+	& cl-profile-picture-upload {
+		& i.fa {
+			font-size: 1.5em;
+		}
+	}
+
 	@media screen and (max-width: $breakpointMediumEnd) {
 		cl-add-new-contact-card {
 			& article {

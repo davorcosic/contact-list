@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { AbstractContactService } from './service/abstract-contact.service';
 import { LocalStorageContactService } from './service/local-storage-contact.service';
 import { ConfirmDialogComponent } from './component/confirm-dialog/confirm-dialog.component';
+import { ProfilePictureUploadComponent } from './component/profile-picture-upload/profile-picture-upload.component';
 
 export function ContactServiceFactory(contactService?: Type<AbstractContactService>) {
 	if (contactService) {
@@ -16,9 +17,9 @@ export function ContactServiceFactory(contactService?: Type<AbstractContactServi
 }
 
 @NgModule({
-	declarations: [ConfirmDialogComponent],
+	declarations: [ConfirmDialogComponent, ProfilePictureUploadComponent],
 	imports: [CommonModule, DialogModule, ButtonModule],
-	exports: [ConfirmDialogComponent]
+	exports: [ConfirmDialogComponent, ProfilePictureUploadComponent]
 })
 export class SharedModule {
 	static forRoot(contactService?: Type<AbstractContactService>): ModuleWithProviders {

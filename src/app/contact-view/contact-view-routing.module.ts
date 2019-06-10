@@ -5,7 +5,8 @@ import { ContactListViewComponent } from './contact-list-view/contact-list-view.
 import { ContactListResolverService } from './contact-list-resolver.service';
 
 const routes: Routes = [
-	{ path: '', component: ContactListViewComponent, resolve: { contacts: ContactListResolverService } }
+	{ path: 'contacts', component: ContactListViewComponent, resolve: { contacts: ContactListResolverService } },
+	{ path: '', redirectTo: 'contacts', pathMatch: 'full' }
 ];
 
 @NgModule({

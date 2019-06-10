@@ -49,3 +49,16 @@
 .secondary-color {
 	color: $secondaryColor;
 }
+
+/* Display */
+.hidden-lt-lg {
+	@media screen and (max-width: $breakpointMediumEnd) {
+		display: none;
+	}
+}
+
+.hidden-lg {
+	@media screen and (min-width: $breakpointLargeStart) {
+		display: none;
+	}
+}
