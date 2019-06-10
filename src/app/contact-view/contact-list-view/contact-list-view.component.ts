@@ -56,6 +56,13 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 		this.displayConfirmDeletionDialog = true;
 	}
 
+	deleteContact() {
+		this.contactService.delete(this.selectedContactId).subscribe(() => {
+			this.displayConfirmDeletionDialog = false;
+			this.loadContacts();
+		});
+	}
+
 	onDeleteCanceled() {
 		this.displayConfirmDeletionDialog = false;
 	}

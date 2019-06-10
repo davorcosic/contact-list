@@ -47,7 +47,8 @@
 					 class="p-col-12 p-lg-3">
 				<cl-contact-card *ngIf="contact.favorite"
 												 [contact]="contact"
-												 (favoriteChange)="onFavoriteChange(contact.id, $event)"></cl-contact-card>
+												 (favoriteChange)="onFavoriteChange(contact.id, $event)"
+												 (deleteContact)="onDeleteContact($event)"></cl-contact-card>
 			</div>
 		</ng-container>
 	</ng-container>
@@ -55,4 +56,5 @@
 </section>
 
 <cl-confirm-dialog [displayDialog]="displayConfirmDeletionDialog"
+									 (actionSelected)="deleteContact()"
 									 (cancelSelected)="onDeleteCanceled()"></cl-confirm-dialog>

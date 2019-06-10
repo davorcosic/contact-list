@@ -30,6 +30,13 @@ export class LocalStorageContactService extends AbstractContactService {
 		return of(changedContact);
 	}
 
+	delete(contactId: number): Observable<{}> {
+		const contactsCopy = [...this.contacts.filter(contact => contact.id !== contactId)];
+		this.saveMockDataToLocalStorage(contactsCopy);
+
+		return of({});
+	}
+
 	private saveMockDataToLocalStorage(contactsToSave: ContactListItem[]) {
 		localStorage.setItem('contacts', JSON.stringify(contactsToSave));
 	}
