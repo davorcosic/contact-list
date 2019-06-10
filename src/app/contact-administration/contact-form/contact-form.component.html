@@ -1,9 +1,9 @@
 <section class="p-grid">
-	<div class="p-offset-2 p-col-2 hidden-lt-lg align-row-end">
+	<div class="p-lg-offset-2 p-lg-col-2 hidden-lt-lg align-row-end">
 		<cl-profile-picture-upload [pictureUrl]="profilePicture.value"></cl-profile-picture-upload>
 	</div>
 
-	<form class="p-col-6"
+	<form class="p-col-12 p-lg-6"
 				[formGroup]="contactFormGroup"
 				(ngSubmit)="saveContact()">
 		<section class="p-col-12 actions">
@@ -12,7 +12,13 @@
 			<i class="fa fa-trash"></i>
 		</section>
 
-		<div class="p-col-12 divider-horizontal"></div>
+		<div class="p-col-12 divider-horizontal secondary-color"></div>
+
+		<div class="p-col-12 hidden-lg align-row-center">
+			<cl-profile-picture-upload [pictureUrl]="profilePicture.value"></cl-profile-picture-upload>
+		</div>
+
+		<div class="p-col-12 hidden-lg divider-horizontal"></div>
 
 		<section class="p-col-12 no-padding">
 			<div class="p-col-12">
@@ -21,7 +27,7 @@
 					<span>full name</span>
 				</label>
 			</div>
-			<div class="p-col-6 ui-fluid">
+			<div class="p-col-12 p-lg-6 ui-fluid">
 				<input id="fullName"
 							 formControlName="fullName"
 							 type="text"
@@ -39,7 +45,7 @@
 					<span>picture url</span>
 				</label>
 			</div>
-			<div class="p-col-6 ui-fluid">
+			<div class="p-col-12 p-lg-6 ui-fluid">
 				<input id="pictureUrl"
 							 formControlName="profilePicture"
 							 type="text"
@@ -57,7 +63,7 @@
 					<span>email</span>
 				</label>
 			</div>
-			<div class="p-col-6 ui-fluid">
+			<div class="p-col-12 p-lg-6 ui-fluid">
 				<input id="email"
 							 formControlName="email"
 							 type="text"
@@ -79,14 +85,14 @@
 			<ng-container *ngFor="let phoneNumber of phoneNumbers.controls; let i = index">
 				<div [formGroupName]="i"
 						 class="p-grid p-col-12 no-padding">
-					<div class="p-col-6 ui-fluid">
+					<div class="p-col-12 p-lg-6 ui-fluid">
 						<input id="phoneNumberValue"
 									 formControlName="value"
 									 type="text"
 									 placeholder="Enter phone"
 									 pInputText />
 					</div>
-					<div class="p-col-4 ui-fluid">
+					<div class="p-col-10 p-lg-4 ui-fluid">
 						<input id="phoneNumberLabel"
 									 formControlName="label"
 									 type="text"
