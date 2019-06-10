@@ -51,6 +51,10 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 		this.contactService.changeFavoriteStatus(contactId, isFavorite).subscribe(() => this.loadContacts());
 	}
 
+	onEditContact(contactId: number) {
+		this.router.navigate([`contact/${contactId}/edit`]);
+	}
+
 	onDeleteContact(contactId: number) {
 		this.selectedContactId = contactId;
 		this.displayConfirmDeletionDialog = true;

@@ -37,6 +37,7 @@
 				 class="p-col-12 p-lg-3">
 			<cl-contact-card [contact]="contact"
 											 (favoriteChange)="onFavoriteChange(contact.id, $event)"
+											 (editContact)="onEditContact($event)"
 											 (deleteContact)="onDeleteContact($event)"></cl-contact-card>
 		</div>
 	</ng-container>
@@ -48,6 +49,7 @@
 				<cl-contact-card *ngIf="contact.favorite"
 												 [contact]="contact"
 												 (favoriteChange)="onFavoriteChange(contact.id, $event)"
+												 (editContact)="onEditContact($event)"
 												 (deleteContact)="onDeleteContact($event)"></cl-contact-card>
 			</div>
 		</ng-container>

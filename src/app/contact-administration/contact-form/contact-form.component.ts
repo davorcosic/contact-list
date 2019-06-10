@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractContactService } from '../../shared/service/abstract-contact.service';
 import { Contact } from '../../shared/model/contact.model';
@@ -13,6 +13,8 @@ import { Contact } from '../../shared/model/contact.model';
 export class ContactFormComponent implements OnInit {
 	contactFormGroup: FormGroup;
 
+	isEdit: boolean;
+
 	get phoneNumbers(): FormArray {
 		return this.contactFormGroup.get('phoneNumbers') as FormArray;
 	}
@@ -21,10 +23,16 @@ export class ContactFormComponent implements OnInit {
 		return this.contactFormGroup.get('profilePicture') as FormControl;
 	}
 
-	constructor(private fb: FormBuilder, private router: Router, private contactService: AbstractContactService) {}
+	constructor(
+		private fb: FormBuilder,
+		private route: ActivatedRoute,
+		private router: Router,
+		private contactService: AbstractContactService
+	) {}
 
 	ngOnInit() {
 		this.createFormGroup();
+		this.getContact();
 	}
 
 	returnToList() {
@@ -47,6 +55,7 @@ export class ContactFormComponent implements OnInit {
 		this.phoneNumbers.removeAt(index);
 	}
 
+	// TODO: For edit form create appropriate form array if contact has more than 1 phone number
 	private createFormGroup() {
 		this.contactFormGroup = this.fb.group({
 			fullName: ['', Validators.required],
@@ -60,6 +69,16 @@ export class ContactFormComponent implements OnInit {
 		return this.fb.group({
 			value: ['', Validators.required],
 			label: ['', Validators.required]
+		});
+	}
+
+	private getContact() {
+		this.route.data.subscribe((data: { contact: Contact }) => {
+			if (data.contact) {
+				this.isEdit = true;
+				this.contactFormGroup.patchValue(data.contact);
+				this.contactFormGroup.get('fullName').setValue(`${data.contact.firstName} ${data.contact.lastName}`);
+			}
 		});
 	}
 

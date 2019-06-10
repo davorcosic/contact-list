@@ -9,7 +9,8 @@
 		<section class="p-col-12 actions">
 			<i class="fa fa-arrow-left"
 				 (click)="returnToList()"></i>
-			<i class="fa fa-trash"></i>
+			<i *ngIf="isEdit"
+				 class="fa fa-trash"></i>
 		</section>
 
 		<div class="p-col-12 divider-horizontal secondary-color"></div>

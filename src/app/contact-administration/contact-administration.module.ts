@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { ContactAdministrationRoutingModule } from './contact-administration-routing.module';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SharedModule } from '../shared/shared.module';
+import { ContactResolverService } from './contact-resolver.service';
 
 @NgModule({
 	declarations: [ContactFormComponent],
@@ -17,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
 		ButtonModule,
 		SharedModule,
 		ContactAdministrationRoutingModule
-	]
+	],
+	providers: [ContactResolverService]
 })
 export class ContactAdministrationModule {}

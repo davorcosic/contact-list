@@ -17,12 +17,19 @@ export class ContactCardComponent implements OnInit {
 	@Output()
 	deleteContact: EventEmitter<number> = new EventEmitter();
 
+	@Output()
+	editContact: EventEmitter<number> = new EventEmitter();
+
 	constructor() {}
 
 	ngOnInit() {}
 
 	toggleFavorite(isFavorite: boolean) {
 		this.favoriteChange.emit(isFavorite);
+	}
+
+	edit() {
+		this.editContact.emit(this.contact.id);
 	}
 
 	delete() {

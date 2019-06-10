@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import { AbstractContactService } from './abstract-contact.service';
 import { ContactListItem } from '../model/contact-list-item.model';
@@ -10,8 +10,8 @@ import { contacts } from '../mock-data/contacts';
 export class LocalStorageContactService extends AbstractContactService {
 	private contactIdSequence: number = 100;
 
-	private get contacts(): ContactListItem[] {
-		return JSON.parse(localStorage.getItem('contacts')) as ContactListItem[];
+	private get contacts(): Contact[] {
+		return JSON.parse(localStorage.getItem('contacts')) as Contact[];
 	}
 
 	private get newContactId(): number {
@@ -25,6 +25,16 @@ export class LocalStorageContactService extends AbstractContactService {
 
 	getAll(): Observable<ContactListItem[]> {
 		return of(this.contacts);
+	}
+
+	getOne(contactId: number): Observable<Contact> {
+		const contactToReturn: Contact = this.contacts.find((contact: Contact) => contact.id === contactId);
+
+		if (!contactToReturn) {
+			throwError('No contact found!');
+		}
+
+		return of(contactToReturn);
 	}
 
 	changeFavoriteStatus(contactId: number, isFavorite: boolean): Observable<ContactListItem> {
