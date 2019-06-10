@@ -1,9 +1,129 @@
 <section class="p-grid">
-	<div class="p-col-4 hidden-lt-lg align-row-end">
+	<div class="p-offset-2 p-col-2 hidden-lt-lg align-row-end">
 		<cl-profile-picture-upload></cl-profile-picture-upload>
 	</div>
 
-	<div class="p-col-8">
+	<form class="p-col-6"
+				[formGroup]="contactFormGroup"
+				(ngSubmit)="saveContact()">
+		<section class="p-col-12 actions">
+			<i class="fa fa-arrow-left"
+				 (click)="returnToList()"></i>
+			<i class="fa fa-trash"></i>
+		</section>
 
-	</div>
+		<div class="p-col-12 divider-horizontal"></div>
+
+		<section class="p-col-12 no-padding">
+			<div class="p-col-12">
+				<label for="fullName">
+					<i class="fa fa-user"></i>
+					<span>full name</span>
+				</label>
+			</div>
+			<div class="p-col-6 ui-fluid">
+				<input id="fullName"
+							 formControlName="fullName"
+							 type="text"
+							 placeholder="Enter name"
+							 pInputText />
+			</div>
+		</section>
+
+		<div class="p-col-12 divider-horizontal"></div>
+
+		<section class="p-col-12 no-padding">
+			<div class="p-col-12">
+				<label for="pictureUrl">
+					<i class="fa fa-picture-o"></i>
+					<span>picture url</span>
+				</label>
+			</div>
+			<div class="p-col-6 ui-fluid">
+				<input id="pictureUrl"
+							 formControlName="pictureUrl"
+							 type="text"
+							 placeholder="Enter url"
+							 pInputText />
+			</div>
+		</section>
+
+		<div class="p-col-12 divider-horizontal"></div>
+
+		<section class="p-col-12 no-padding">
+			<div class="p-col-12">
+				<label for="email">
+					<i class="fa fa-envelope-o"></i>
+					<span>email</span>
+				</label>
+			</div>
+			<div class="p-col-6 ui-fluid">
+				<input id="email"
+							 formControlName="email"
+							 type="text"
+							 placeholder="Enter email"
+							 pInputText />
+			</div>
+		</section>
+
+		<div class="p-col-12 divider-horizontal"></div>
+
+		<section formArrayName="phoneNumbers"
+						 class="p-col-12 no-padding">
+			<div class="p-col-12">
+				<label>
+					<i class="fa fa-phone"></i>
+					<span>numbers</span>
+				</label>
+			</div>
+			<ng-container *ngFor="let phoneNumber of phoneNumbers.controls; let i = index">
+				<div [formGroupName]="i"
+						 class="p-grid p-col-12 no-padding">
+					<div class="p-col-6 ui-fluid">
+						<input id="phoneNumberValue"
+									 formControlName="value"
+									 type="text"
+									 placeholder="Enter phone"
+									 pInputText />
+					</div>
+					<div class="p-col-4 ui-fluid">
+						<input id="phoneNumberLabel"
+									 formControlName="label"
+									 type="text"
+									 placeholder="Enter label"
+									 pInputText />
+					</div>
+					<div class="p-col-2 align-column-center">
+						<button pButton
+										type="button"
+										icon="fa fa-close"
+										class="round-btn secondary-btn"
+										[disabled]="!phoneNumbers.valid || phoneNumbers.length === 1"></button>
+					</div>
+				</div>
+			</ng-container>
+			<div class="p-col-12">
+				<button pButton
+								type="button"
+								icon="fa fa-plus"
+								class="round-btn primary-btn"
+								[disabled]="!phoneNumbers.valid"></button>
+				<span class="primary-color"
+							[ngClass]="{'opacity-half': !phoneNumbers.valid}">Add number</span>
+			</div>
+		</section>
+
+		<section class="p-col-12 form-actions">
+			<button pButton
+							type="button"
+							label="Cancel"
+							class="cl-btn secondary-btn"
+							(click)="returnToList()"></button>
+			<button pButton
+							type="submit"
+							label="Save"
+							class="cl-btn primary-btn"
+							[disabled]="!contactFormGroup.valid"></button>
+		</section>
+	</form>
 </section>

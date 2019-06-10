@@ -41,6 +41,14 @@
 	@extend %align-row-end;
 }
 
+.align-row-space-around {
+	@extend %align-row-space-around;
+}
+
+.align-column-center {
+	@extend %align-column-center;
+}
+
 /* Colors */
 .primary-color {
 	color: $primaryColor;
@@ -48,6 +56,10 @@
 
 .secondary-color {
 	color: $secondaryColor;
+}
+
+.opacity-half {
+	opacity: 0.5;
 }
 
 /* Display */
@@ -61,4 +73,9 @@
 	@media screen and (min-width: $breakpointLargeStart) {
 		display: none;
 	}
+}
+
+/* Box dimensions */
+.no-padding {
+	padding: 0;
 }

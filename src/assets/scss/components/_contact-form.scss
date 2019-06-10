@@ -1,0 +1,36 @@
+cl-contact-form {
+	& section.actions {
+		@extend %align-row-space-around;
+
+		& i.fa {
+			color: $secondaryColor;
+			cursor: pointer;
+		}
+	}
+
+	& label {
+		color: $primaryColor;
+		display: block;
+
+		& i {
+			margin-right: 1em;
+		}
+
+		& span {
+			font-weight: bold;
+		}
+	}
+
+	& div.divider-horizontal {
+		margin: 1em 0;
+	}
+
+	& button.round-btn.primary-btn {
+		margin-right: 0.5em;
+	}
+
+	& .form-actions {
+		margin-top: 2em;
+		@extend %align-row-space-around;
+	}
+}

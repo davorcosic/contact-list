@@ -21,3 +21,21 @@ button.cl-btn {
 		border-color: $primaryColor;
 	}
 }
+
+button.round-btn {
+	border-radius: 50%;
+	height: 2.25em;
+	width: 2.25em;
+
+	&.secondary-btn {
+		background-color: white;
+		border-color: $secondaryColor;
+		color: $secondaryColor;
+	}
+
+	&.primary-btn {
+		background-color: white;
+		border-color: $primaryColor;
+		color: $primaryColor;
+	}
+}

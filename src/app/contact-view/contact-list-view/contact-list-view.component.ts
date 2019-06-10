@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 
 import { ContactListItem } from '../../shared/model/contact-list-item.model';
@@ -27,7 +27,7 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 
 	private searchSubscription: Subscription;
 
-	constructor(private route: ActivatedRoute, private contactService: AbstractContactService) {}
+	constructor(private route: ActivatedRoute, private contactService: AbstractContactService, private router: Router) {}
 
 	ngOnInit() {
 		this.getContacts();
@@ -44,7 +44,7 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 	}
 
 	onAddNewContact() {
-		console.log('Add new contact clicked!');
+		this.router.navigate(['contact']);
 	}
 
 	onFavoriteChange(contactId: number, isFavorite: boolean) {
