@@ -1,6 +1,9 @@
 <figure class="profile-picture">
-	<!-- <img src="{{ contact.profilePicture }}"
-				 alt="User profile picture"> -->
+	<img *ngIf="pictureUrl"
+			 src="{{ pictureUrl }}"
+			 alt="User profile picture"
+			 (error)="pictureUrl = 'assets/image/profile-pic-placeholder.png'">
 
-	<i class="fa fa-picture-o"></i>
+	<i *ngIf="!pictureUrl"
+		 class="fa fa-picture-o"></i>
 </figure>

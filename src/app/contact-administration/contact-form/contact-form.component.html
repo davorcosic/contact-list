@@ -1,6 +1,6 @@
 <section class="p-grid">
 	<div class="p-offset-2 p-col-2 hidden-lt-lg align-row-end">
-		<cl-profile-picture-upload></cl-profile-picture-upload>
+		<cl-profile-picture-upload [pictureUrl]="profilePicture.value"></cl-profile-picture-upload>
 	</div>
 
 	<form class="p-col-6"
@@ -41,7 +41,7 @@
 			</div>
 			<div class="p-col-6 ui-fluid">
 				<input id="pictureUrl"
-							 formControlName="pictureUrl"
+							 formControlName="profilePicture"
 							 type="text"
 							 placeholder="Enter url"
 							 pInputText />
@@ -98,7 +98,8 @@
 										type="button"
 										icon="fa fa-close"
 										class="round-btn secondary-btn"
-										[disabled]="!phoneNumbers.valid || phoneNumbers.length === 1"></button>
+										[disabled]="!phoneNumber.valid || phoneNumbers.length === 1"
+										(click)="removePhoneNumber(i)"></button>
 					</div>
 				</div>
 			</ng-container>
@@ -107,7 +108,8 @@
 								type="button"
 								icon="fa fa-plus"
 								class="round-btn primary-btn"
-								[disabled]="!phoneNumbers.valid"></button>
+								[disabled]="!phoneNumbers.valid"
+								(click)="addPhoneNumber()"></button>
 				<span class="primary-color"
 							[ngClass]="{'opacity-half': !phoneNumbers.valid}">Add number</span>
 			</div>

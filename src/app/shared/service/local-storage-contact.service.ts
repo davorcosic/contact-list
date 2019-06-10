@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, EMPTY } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { AbstractContactService } from './abstract-contact.service';
 import { ContactListItem } from '../model/contact-list-item.model';
+import { Contact } from '../model/contact.model';
 import { contacts } from '../mock-data/contacts';
 
 @Injectable()
 export class LocalStorageContactService extends AbstractContactService {
+	private contactIdSequence: number = 100;
+
 	private get contacts(): ContactListItem[] {
 		return JSON.parse(localStorage.getItem('contacts')) as ContactListItem[];
+	}
+
+	private get newContactId(): number {
+		return this.contactIdSequence++;
 	}
 
 	constructor() {
@@ -35,6 +42,16 @@ export class LocalStorageContactService extends AbstractContactService {
 		this.saveMockDataToLocalStorage(contactsCopy);
 
 		return of({});
+	}
+
+	save(contact: Contact): Observable<Contact> {
+		const contactsCopy = [...this.contacts];
+
+		contact.id = this.newContactId;
+		contactsCopy.push(contact);
+		this.saveMockDataToLocalStorage(contactsCopy);
+
+		return of(contact);
 	}
 
 	private saveMockDataToLocalStorage(contactsToSave: ContactListItem[]) {
