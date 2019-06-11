@@ -40,32 +40,28 @@ export class ContactFormComponent implements OnInit {
 	}
 
 	saveContact() {
-		console.log(this.contactFormGroup.value);
 		const contactToSave: Contact = this.mapContactFromForm();
-		console.log(contactToSave);
-
 		this.contactService.save(contactToSave).subscribe(() => this.returnToList());
 	}
 
 	addPhoneNumber() {
-		this.phoneNumbers.push(this.buildPhoneNumber());
+		this.phoneNumbers.push(this.createPhoneNumberFormGroup());
 	}
 
 	removePhoneNumber(index: number) {
 		this.phoneNumbers.removeAt(index);
 	}
 
-	// TODO: For edit form create appropriate form array if contact has more than 1 phone number
 	private createFormGroup() {
 		this.contactFormGroup = this.fb.group({
 			fullName: ['', Validators.required],
 			profilePicture: '',
 			email: ['', [Validators.required, Validators.email]],
-			phoneNumbers: this.fb.array([this.buildPhoneNumber()])
+			phoneNumbers: this.fb.array([this.createPhoneNumberFormGroup()])
 		});
 	}
 
-	private buildPhoneNumber() {
+	private createPhoneNumberFormGroup() {
 		return this.fb.group({
 			value: ['', Validators.required],
 			label: ['', Validators.required]
@@ -76,10 +72,18 @@ export class ContactFormComponent implements OnInit {
 		this.route.data.subscribe((data: { contact: Contact }) => {
 			if (data.contact) {
 				this.isEdit = true;
+				this.updateFormGroupForEdit(data.contact);
+
 				this.contactFormGroup.patchValue(data.contact);
 				this.contactFormGroup.get('fullName').setValue(`${data.contact.firstName} ${data.contact.lastName}`);
 			}
 		});
+	}
+
+	private updateFormGroupForEdit(contact: Contact) {
+		for (let i = 1; i <= contact.phoneNumbers.length - 1; i++) {
+			this.phoneNumbers.push(this.createPhoneNumberFormGroup());
+		}
 	}
 
 	private mapContactFromForm() {
