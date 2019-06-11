@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { AbstractContactService } from '../../shared/service/abstract-contact.service';
 import { Contact } from '../../shared/model/contact.model';
+import { ConfirmationProperties } from '../../shared/component/confirm-dialog/model/confirmation-properties.model';
+import { ConfirmationService } from '../../shared/component/confirm-dialog/service/confirmation.service';
 
 @Component({
 	selector: 'cl-contact-form',
@@ -27,7 +29,8 @@ export class ContactFormComponent implements OnInit {
 		private fb: FormBuilder,
 		private route: ActivatedRoute,
 		private router: Router,
-		private contactService: AbstractContactService
+		private contactService: AbstractContactService,
+		private confirmationService: ConfirmationService
 	) {}
 
 	ngOnInit() {
@@ -55,6 +58,26 @@ export class ContactFormComponent implements OnInit {
 
 	removePhoneNumber(index: number) {
 		this.phoneNumbers.removeAt(index);
+	}
+
+	onDeleteContact() {
+		const confirmationProperties: ConfirmationProperties = {
+			headerTitle: 'Delete',
+			message: 'Are you sure you want to delete this contact?',
+			acceptLabel: 'Delete',
+			acceptFunction: () => this.deleteContact()
+		};
+
+		this.confirmationService.activateConfirmation(confirmationProperties);
+	}
+
+	deleteContact() {
+		const contactId: number = +this.contactFormGroup.get('id').value;
+
+		this.contactService.delete(contactId).subscribe(() => {
+			this.confirmationService.setVisibility(false);
+			this.returnToList();
+		});
 	}
 
 	private createFormGroup() {

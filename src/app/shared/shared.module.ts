@@ -7,6 +7,7 @@ import { AbstractContactService } from './service/abstract-contact.service';
 import { LocalStorageContactService } from './service/local-storage-contact.service';
 import { ConfirmDialogComponent } from './component/confirm-dialog/confirm-dialog.component';
 import { ProfilePictureUploadComponent } from './component/profile-picture-upload/profile-picture-upload.component';
+import { ConfirmationService } from './component/confirm-dialog/service/confirmation.service';
 
 export function ContactServiceFactory(contactService?: Type<AbstractContactService>) {
 	if (contactService) {
@@ -26,7 +27,8 @@ export class SharedModule {
 		return {
 			ngModule: SharedModule,
 			providers: [
-				{ provide: AbstractContactService, useClass: contactService ? contactService : LocalStorageContactService }
+				{ provide: AbstractContactService, useClass: contactService ? contactService : LocalStorageContactService },
+				ConfirmationService
 			]
 		};
 	}

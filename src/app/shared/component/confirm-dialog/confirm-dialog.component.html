@@ -1,9 +1,9 @@
-<p-dialog [header]="headerTitle"
+<p-dialog [header]="confirmationProperties?.headerTitle"
 					[(visible)]="displayDialog"
 					[modal]="true"
 					[closable]="false">
 
-	<p>{{ message }}</p>
+	<p>{{ confirmationProperties?.message }}</p>
 
 	<section class="p-grid action-section">
 		<div class="p-col-12 p-lg-6 align-row-center">
@@ -12,7 +12,7 @@
 								(onClick)="cancel()"></p-button>
 		</div>
 		<div class="p-col-12 p-lg-6 align-row-center">
-			<p-button [label]="actionLabel"
+			<p-button [label]="confirmationProperties?.acceptLabel"
 								styleClass="cl-btn primary-btn"
 								(onClick)="action()"></p-button>
 		</div>

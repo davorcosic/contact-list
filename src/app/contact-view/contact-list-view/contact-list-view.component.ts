@@ -4,6 +4,8 @@ import { Subject, Subscription } from 'rxjs';
 
 import { ContactListItem } from '../../shared/model/contact-list-item.model';
 import { AbstractContactService } from '../../shared/service/abstract-contact.service';
+import { ConfirmationProperties } from '../../shared/component/confirm-dialog/model/confirmation-properties.model';
+import { ConfirmationService } from '../../shared/component/confirm-dialog/service/confirmation.service';
 
 @Component({
 	selector: 'cl-contact-list-view',
@@ -27,7 +29,12 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 
 	private searchSubscription: Subscription;
 
-	constructor(private route: ActivatedRoute, private contactService: AbstractContactService, private router: Router) {}
+	constructor(
+		private route: ActivatedRoute,
+		private contactService: AbstractContactService,
+		private router: Router,
+		private confirmationService: ConfirmationService
+	) {}
 
 	ngOnInit() {
 		this.getContacts();
@@ -57,18 +64,22 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 
 	onDeleteContact(contactId: number) {
 		this.selectedContactId = contactId;
-		this.displayConfirmDeletionDialog = true;
+
+		const confirmationProperties: ConfirmationProperties = {
+			headerTitle: 'Delete',
+			message: 'Are you sure you want to delete this contact?',
+			acceptLabel: 'Delete',
+			acceptFunction: () => this.deleteContact()
+		};
+
+		this.confirmationService.activateConfirmation(confirmationProperties);
 	}
 
 	deleteContact() {
 		this.contactService.delete(this.selectedContactId).subscribe(() => {
-			this.displayConfirmDeletionDialog = false;
+			this.confirmationService.setVisibility(false);
 			this.loadContacts();
 		});
-	}
-
-	onDeleteCanceled() {
-		this.displayConfirmDeletionDialog = false;
 	}
 
 	private getContacts() {
