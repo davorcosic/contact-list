@@ -1,0 +1,73 @@
+<section class="p-grid">
+	<div class="p-lg-offset-2 p-lg-col-2 hidden-lt-lg align-row-end">
+		<cl-profile-picture-upload [pictureUrl]="contact.profilePicture"></cl-profile-picture-upload>
+	</div>
+
+	<div class="p-col-12 p-lg-6">
+
+		<section class="p-grid p-col-12 actions">
+			<div class="p-col-10 p-lg-1">
+				<i class="fa fa-arrow-left"
+					 (click)="returnToList()"></i>
+			</div>
+			<div class="p-col-9 hidden-lt-lg ">
+				<span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+			</div>
+			<div class="p-col-1">
+				<i *ngIf="!contact.favorite"
+					 class="fa fa-heart-o"
+					 (click)="toggleFavorite(true)"></i>
+				<i *ngIf="contact.favorite"
+					 class="fa fa-heart"
+					 (click)="toggleFavorite(false)"></i>
+			</div>
+			<div class="p-col-1">
+				<i class="fa fa-pencil"
+					 (click)="edit()"></i>
+			</div>
+		</section>
+
+		<div class="p-col-12 divider-horizontal secondary-color"></div>
+
+		<section class="p-grid p-col-12 hidden-lg">
+			<div class="p-col-4 align-row-center">
+				<cl-profile-picture-upload [pictureUrl]="contact.profilePicture"></cl-profile-picture-upload>
+			</div>
+			<div class="p-col-8 align-column-center">
+				<span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+			</div>
+		</section>
+
+		<div class="p-col-12 hidden-lg divider-horizontal"></div>
+
+		<section class="p-grid p-col-12 no-padding">
+			<div class="p-col-4">
+				<label>
+					<i class="fa fa-envelope-o"></i>
+					<span>email</span>
+				</label>
+			</div>
+			<div class="p-col-12 p-lg-8">
+				<span class="contact-info">{{ contact.email }}</span>
+			</div>
+		</section>
+
+		<section class="p-grid p-col-12 no-padding">
+			<div class="p-col-4">
+				<label>
+					<i class="fa fa-phone"></i>
+					<span>numbers</span>
+				</label>
+			</div>
+			<div class="p-col-12 p-lg-8 no-padding">
+				<div *ngFor="let phoneNumber of contact.phoneNumbers"
+						 class="p-col-12 contact-info no-padding">
+					<span class="p-col-4">{{ phoneNumber.label }}</span>
+					<span class="p-col-8 underline">{{ phoneNumber.value }}</span>
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+</section>

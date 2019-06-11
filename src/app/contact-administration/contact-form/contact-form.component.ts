@@ -85,6 +85,7 @@ export class ContactFormComponent implements OnInit {
 			id: '',
 			fullName: ['', Validators.required],
 			profilePicture: '',
+			favorite: '',
 			email: ['', [Validators.required, Validators.email]],
 			phoneNumbers: this.fb.array([this.createPhoneNumberFormGroup()])
 		});

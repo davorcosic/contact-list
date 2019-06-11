@@ -73,6 +73,18 @@ body {
 		}
 	}
 
+	cl-contact-details-view {
+		& section.actions {
+			& i.fa {
+				font-size: 1.5em;
+			}
+
+			& .contact-name {
+				font-size: 1.5em;
+			}
+		}
+	}
+
 	@media screen and (max-width: $breakpointMediumEnd) {
 		cl-add-new-contact-card {
 			& article {
@@ -83,6 +95,12 @@ body {
 				& p {
 					font-size: 1.25em;
 				}
+			}
+		}
+
+		cl-contact-details-view {
+			& .contact-name {
+				font-size: 2em;
 			}
 		}
 	}

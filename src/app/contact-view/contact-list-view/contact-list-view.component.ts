@@ -82,6 +82,10 @@ export class ContactListViewComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	onOpenContactDetails(contactId: number) {
+		this.router.navigate([`contact/${contactId}`]);
+	}
+
 	private getContacts() {
 		this.route.data.subscribe((data: { contacts: ContactListItem[] }) => {
 			this.allContacts = data.contacts;

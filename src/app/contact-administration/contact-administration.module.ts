@@ -8,9 +8,10 @@ import { ContactAdministrationRoutingModule } from './contact-administration-rou
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SharedModule } from '../shared/shared.module';
 import { ContactResolverService } from './contact-resolver.service';
+import { ContactDetailsViewComponent } from './contact-details-view/contact-details-view.component';
 
 @NgModule({
-	declarations: [ContactFormComponent],
+	declarations: [ContactFormComponent, ContactDetailsViewComponent],
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,

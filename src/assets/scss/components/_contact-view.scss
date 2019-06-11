@@ -28,6 +28,10 @@ cl-contact-card {
 			cursor: pointer;
 		}
 
+		& figure {
+			cursor: pointer;
+		}
+
 		& .profile-picture {
 			box-sizing: border-box;
 			@extend %align-column-all-center;

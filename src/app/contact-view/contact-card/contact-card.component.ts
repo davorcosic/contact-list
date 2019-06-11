@@ -20,6 +20,9 @@ export class ContactCardComponent implements OnInit {
 	@Output()
 	editContact: EventEmitter<number> = new EventEmitter();
 
+	@Output()
+	openDetails: EventEmitter<number> = new EventEmitter();
+
 	constructor() {}
 
 	ngOnInit() {}
@@ -34,5 +37,9 @@ export class ContactCardComponent implements OnInit {
 
 	delete() {
 		this.deleteContact.emit(this.contact.id);
+	}
+
+	openDetailsView() {
+		this.openDetails.emit(this.contact.id);
 	}
 }

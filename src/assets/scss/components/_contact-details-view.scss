@@ -1,0 +1,44 @@
+cl-contact-details-view {
+	& section.actions {
+		& i.fa {
+			color: $secondaryColor;
+			cursor: pointer;
+		}
+	}
+
+	& .contact-name {
+		color: $secondaryColor;
+		font-weight: bold;
+	}
+
+	& div.divider-horizontal {
+		margin: 1em 0;
+	}
+
+	& label {
+		color: $primaryColor;
+		display: inline-block;
+
+		& i {
+			margin-right: 1em;
+		}
+
+		& span {
+			font-weight: bold;
+		}
+	}
+
+	.contact-info {
+		color: $secondaryColor;
+
+		& > span {
+			display: inline-block;
+		}
+	}
+
+	@media screen and (max-width: $breakpointMediumEnd) {
+		& div.divider-horizontal {
+			margin: 0.5em 0;
+		}
+	}
+}

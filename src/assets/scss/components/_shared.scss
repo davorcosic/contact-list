@@ -16,7 +16,7 @@ cl-profile-picture-upload {
 		width: $profilePictureSize * 2;
 		border-radius: 50%;
 		border: 5px solid $secondaryColorLight;
-		background-color: $primaryColorLight; // remove after enabling picture adding
+		background-color: $primaryColorLight;
 		@extend %align-column-all-center;
 
 		& img {
@@ -28,6 +28,13 @@ cl-profile-picture-upload {
 
 		& i.fa {
 			color: white;
+		}
+	}
+
+	@media screen and (max-width: $breakpointMediumEnd) {
+		& figure.profile-picture {
+			height: $profilePictureSize;
+			width: $profilePictureSize;
 		}
 	}
 }
