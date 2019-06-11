@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfilePictureUploadComponent } from './profile-picture-upload.component';
+import { ProfilePictureUploadComponent } from './profile-picture.component';
 
 describe('ProfilePictureUploadComponent', () => {
   let component: ProfilePictureUploadComponent;

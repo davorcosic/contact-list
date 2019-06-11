@@ -10,7 +10,7 @@ cl-confirm-dialog {
 	}
 }
 
-cl-profile-picture-upload {
+cl-profile-picture {
 	& figure.profile-picture {
 		height: $profilePictureSize * 2;
 		width: $profilePictureSize * 2;

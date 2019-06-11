@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { AbstractContactService } from './service/abstract-contact.service';
 import { LocalStorageContactService } from './service/local-storage-contact.service';
 import { ConfirmDialogComponent } from './component/confirm-dialog/confirm-dialog.component';
-import { ProfilePictureUploadComponent } from './component/profile-picture-upload/profile-picture-upload.component';
+import { ProfilePictureUploadComponent } from './component/profile-picture/profile-picture.component';
 import { ConfirmationService } from './component/confirm-dialog/service/confirmation.service';
 
 export function ContactServiceFactory(contactService?: Type<AbstractContactService>) {
