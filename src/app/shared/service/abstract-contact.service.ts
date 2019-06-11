@@ -13,4 +13,6 @@ export abstract class AbstractContactService {
 	abstract delete(contactId: number): Observable<{}>;
 
 	abstract save(contact: Contact): Observable<Contact>;
+
+	abstract update(contact: Contact): Observable<Contact>;
 }

@@ -41,7 +41,12 @@ export class ContactFormComponent implements OnInit {
 
 	saveContact() {
 		const contactToSave: Contact = this.mapContactFromForm();
-		this.contactService.save(contactToSave).subscribe(() => this.returnToList());
+
+		if (this.isEdit) {
+			this.contactService.update(contactToSave).subscribe(() => this.returnToList());
+		} else {
+			this.contactService.save(contactToSave).subscribe(() => this.returnToList());
+		}
 	}
 
 	addPhoneNumber() {
@@ -54,6 +59,7 @@ export class ContactFormComponent implements OnInit {
 
 	private createFormGroup() {
 		this.contactFormGroup = this.fb.group({
+			id: '',
 			fullName: ['', Validators.required],
 			profilePicture: '',
 			email: ['', [Validators.required, Validators.email]],
@@ -81,6 +87,10 @@ export class ContactFormComponent implements OnInit {
 	}
 
 	private updateFormGroupForEdit(contact: Contact) {
+		if (!contact.phoneNumbers || !contact.phoneNumbers.length) {
+			return;
+		}
+
 		for (let i = 1; i <= contact.phoneNumbers.length - 1; i++) {
 			this.phoneNumbers.push(this.createPhoneNumberFormGroup());
 		}
