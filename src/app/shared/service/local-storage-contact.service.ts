@@ -21,6 +21,7 @@ export class LocalStorageContactService extends AbstractContactService {
 	constructor() {
 		super();
 		this.saveMockDataToLocalStorage(contacts);
+		console.log('[LocalStorageContactService] Instantiated!');
 	}
 
 	getAll(): Observable<ContactListItem[]> {
@@ -74,7 +75,7 @@ export class LocalStorageContactService extends AbstractContactService {
 		return of(updatedContact);
 	}
 
-	private saveMockDataToLocalStorage(contactsToSave: ContactListItem[]) {
+	private saveMockDataToLocalStorage(contactsToSave: Contact[]) {
 		localStorage.setItem('contacts', JSON.stringify(contactsToSave));
 	}
 }

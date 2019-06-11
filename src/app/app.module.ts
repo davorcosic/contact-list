@@ -8,7 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ContactViewModule } from './contact-view/contact-view.module';
 import { ContactAdministrationModule } from './contact-administration/contact-administration.module';
 import { SharedModule } from './shared/shared.module';
-// import { MockServerContactService } from './mock-server-contact.service';
+import { MockServerContactService } from './mock-server-contact.service';
 
 @NgModule({
 	declarations: [AppComponent, PageNotFoundComponent],
