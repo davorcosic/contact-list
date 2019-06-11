@@ -1,6 +1,6 @@
 import { ContactListItem } from './contact-list-item.model';
 
-interface PhoneNumber {
+export interface PhoneNumber {
 	value: string;
 	label: string;
 }

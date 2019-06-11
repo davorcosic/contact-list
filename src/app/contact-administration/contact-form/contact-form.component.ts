@@ -6,6 +6,7 @@ import { AbstractContactService } from '../../shared/service/abstract-contact.se
 import { Contact } from '../../shared/model/contact.model';
 import { ConfirmationProperties } from '../../shared/component/confirm-dialog/model/confirmation-properties.model';
 import { ConfirmationService } from '../../shared/component/confirm-dialog/service/confirmation.service';
+import { ContactForm } from '../model/contact-form.model';
 
 @Component({
 	selector: 'cl-contact-form',
@@ -121,17 +122,21 @@ export class ContactFormComponent implements OnInit {
 	}
 
 	private mapContactFromForm() {
-		const contact: Contact = this.contactFormGroup.value;
-		const fullName: string = this.contactFormGroup.get('fullName').value as string;
+		const contact = new Contact();
+		const contactFormValue: ContactForm = this.contactFormGroup.value;
 
-		delete contact['fullName'];
+		Object.keys(contactFormValue).forEach((key: string) => {
+			if (key !== 'fullName') {
+				contact[key] = contactFormValue[key];
+			}
+		});
 
-		contact.firstName = fullName.split(' ')[0];
+		contact.firstName = contactFormValue.fullName.split(' ')[0];
 
 		if (!contact.firstName) {
-			contact.firstName = fullName;
+			contact.firstName = contactFormValue.fullName;
 		} else {
-			contact.lastName = fullName.split(' ')[1];
+			contact.lastName = contactFormValue.fullName.split(' ')[1];
 		}
 
 		return contact;
